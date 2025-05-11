@@ -79,6 +79,12 @@ class StoryBoardViewModel(
         }
     }
 
+    fun updateStoryBoard(sb: StoryBoard) {
+        viewModelScope.launch {
+            storyBoardRepository.updateBoard(sb)
+        }
+    }
+
     companion object {
         val Factory: ViewModelProvider.Factory = viewModelFactory {
             initializer {

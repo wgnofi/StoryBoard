@@ -7,6 +7,7 @@ interface StoryBoardRepository {
     fun getBoards(): Flow<List<StoryBoard>>
     suspend fun deleteBoard(sb: StoryBoard)
     fun getBoard(id: Int): Flow<StoryBoard?>
+    suspend fun updateBoard(sb: StoryBoard)
 }
 
 
@@ -18,4 +19,6 @@ class OfflineStoryBoardRepository(private val dao: StoryBoardDao): StoryBoardRep
     override suspend fun deleteBoard(sb: StoryBoard) = dao.deleteBoard(sb)
 
     override fun getBoard(id: Int): Flow<StoryBoard?> = dao.getBoard(id)
+
+    override suspend fun updateBoard(sb: StoryBoard) = dao.updateBoard(sb)
 }

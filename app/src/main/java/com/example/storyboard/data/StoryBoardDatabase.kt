@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 
-@Database(entities = [StoryBoard::class], version = 1, exportSchema = false)
+@Database(entities = [StoryBoard::class], version = 2, exportSchema = false)
 @TypeConverters(PanelListConverter::class)
 abstract class StoryBoardDatabase: RoomDatabase() {
     abstract fun storyBoardDao(): StoryBoardDao
@@ -21,6 +21,7 @@ abstract class StoryBoardDatabase: RoomDatabase() {
                     context.applicationContext,
                     StoryBoardDatabase::class.java,
                     "storyboard_database")
+                    .fallbackToDestructiveMigration(true)
                     .build()
                     .also { Instance = it }
             }

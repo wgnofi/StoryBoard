@@ -66,7 +66,14 @@ fun HomeScreen(
                     Column(modifier = Modifier
                         .fillMaxWidth()
                         .verticalScroll(rememberScrollState())) {
-                        storyBoards.boards.forEach {
+                        Text("Ongoing", modifier = Modifier.padding(16.dp), fontSize = 22.sp)
+                        storyBoards.boards.filter { it.status == 0 }.forEach {
+                            StoryCard(onClick = { id ->
+                                navController.navigate(Navigate.STORY_DETAIL + "/${id}")
+                            },sb = it)
+                        }
+                        Text("Completed", modifier = Modifier.padding(16.dp), fontSize = 22.sp)
+                        storyBoards.boards.filter { it.status == 1 }.forEach {
                             StoryCard(onClick = { id ->
                                 navController.navigate(Navigate.STORY_DETAIL + "/${id}")
                             },sb = it)

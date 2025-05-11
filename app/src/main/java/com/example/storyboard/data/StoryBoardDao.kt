@@ -5,6 +5,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Update
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -20,4 +21,7 @@ interface StoryBoardDao {
 
     @Query("SELECT * FROM storyboard WHERE id = :id")
     fun getBoard(id: Int): Flow<StoryBoard?>
+
+    @Update
+    suspend fun updateBoard(storyBoard: StoryBoard)
 }

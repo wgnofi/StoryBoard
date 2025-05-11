@@ -12,6 +12,8 @@ data class StoryBoard(
 
     var name: String = "",
 
+    var status: Int = 0,
+
     @TypeConverters(PanelListConverter::class)
     var panels: List<Panel> = emptyList()
 )
